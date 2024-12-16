@@ -1,0 +1,225 @@
+/* Header */
+.header {
+  background: #202020;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.header .inner-logo a {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Body */
+
+/* Body */
+.body .sider {
+  width: 150px;
+  background: #131010;
+  color: #fff;
+  height: calc(100vh - 56px);
+  position: fixed;
+  top: 56px;
+  left: 0;
+}
+.sider {
+  width: 200px;
+  background: #2c3e50;
+  color: #ecf0f1;
+  height: calc(100vh - 56px);
+  position: fixed;
+  top: 56px;
+  left: 0;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sider .inner-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sider .inner-menu li {
+  margin-bottom: 15px;
+}
+
+.sider .inner-menu a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.sider .inner-menu a:hover {
+  background: #34495e;
+}
+
+.body .main {
+  margin: 15px;
+  position: relative;
+  left: 150px;
+  width: calc(100% - 180px);
+}
+.table {
+  background: white;
+  margin-top: 20px;
+}
+
+.table thead th {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table tbody td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.badge {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+img {
+  object-fit: cover;
+  border-radius: 4px;
+}
+/* End Body */
+.pagination {
+  margin: 20px 0;
+}
+
+.page-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  gap: 5px;
+}
+
+.page-link {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+}
+
+.page-item.active .page-link {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.page-link:hover {
+  background: #f8f9fa;
+}
+/* Alert styles */
+.message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.alert {
+  padding: 15px 40px 15px 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease-in-out;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border-left: 4px solid #28a745;
+}
+
+/* Close button */
+[close-alert] {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px;
+  color: inherit;
+  opacity: 0.7;
+}
+
+[close-alert]:hover {
+  opacity: 1;
+}
+
+/* Hidden state */
+.alert-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+}
+/* styles.css */
+
+/* Định dạng tiêu đề sản phẩm */
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+/* Định dạng các div chứa thông tin sản phẩm */
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+/* Định dạng giá sản phẩm */
+b {
+  font-weight: bold;
+  color: #007bff; /* Màu xanh cho giá */
+}
+
+/* Định dạng badge trạng thái */
+.badge {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Định dạng badge thành công */
+.badge-success {
+  background-color: #28a745; /* Màu xanh lá */
+  color: white;
+}
+
+/* Định dạng badge lỗi */
+.badge-danger {
+  background-color: #dc3545; /* Màu đỏ */
+  color: white;
+}
+
+/* Định dạng hình ảnh thu nhỏ */
+img {
+  border: 1px solid #ddd; /* Đường viền cho hình ảnh */
+  border-radius: 4px; /* Bo góc hình ảnh */
+}
+
+/* Định dạng thông báo */
+.message.info {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #007bff; /* Đường viền cho thông báo */
+  background-color: #e7f1ff; /* Nền cho thông báo */
+  color: #007bff; /* Màu chữ cho thông báo */
+}
