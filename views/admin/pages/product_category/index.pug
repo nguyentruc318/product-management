@@ -1,0 +1,33 @@
+extends ../../layouts/default.pug
+include ../../mixins/filter_status.pug
+include ../../mixins/search.pug
+include ../../mixins/pagination.pug
+include ../../mixins/form_changeMulti.pug
+include ../../mixins/alert.pug
+include ../../mixins/sort.pug
+include ../../mixins/table_tree.pug
+block main
+
+  h1 Trang danh mục sản phẩm
+
+  
+  .card.mb-3
+    .card-body
+      .row
+        .col-8
+        .col-4
+          a(href=`/admin/products-category/create` class="btn btn-outline-success") + Thêm mới
+      
+      table.table.table-bordered.table-hover(checkebox-multi)
+          thead.thead-light
+            tr
+              th
+                input(type="checkbox" name="select-all" id="select-all")
+              th STT
+              th Hình ảnh
+              th Tiêu đề
+              th Vị trí
+              th Trạng thái
+              th Hành động
+          tbody
+            +table-tree(records)

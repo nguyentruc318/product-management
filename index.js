@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 require("dotenv").config();
 const methodOverride = require("method-override");
 const flash = require("express-flash");
@@ -12,6 +13,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const port = process.env.PORT;
 const database = require("./configs/database");
 const system = require("./configs/system");
+// tinymce
+app.use(
+  "/tinymce",
+  express.static(path.join(__dirname, "node_modules", "tinymce"))
+);
 app.locals.prefix = system.prefix;
 database.connect();
 const route = require("./routes/client/index_routes");
