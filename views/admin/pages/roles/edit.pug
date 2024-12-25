@@ -1,0 +1,29 @@
+extends ../../layouts/default.pug
+
+block main
+  h1.mb-4 Thêm mới nhóm quyền
+  form(
+    action=`/admin/roles/edit/${role.id}?_method=PATCH`
+    method="POST"
+  )
+    div.form-group
+      label(for="title") Tiêu đề
+      input#title.form-control(
+        type="text"
+        name="title"
+        required
+        value=role.title
+      )
+
+    div.form-group
+      label(for="desc") Mô tả
+      input#desc.form-control(
+        type="text"
+        name="description"
+        value=role.description
+      )
+
+    div.form-group
+      button.btn.btn-primary(
+        type="submit"
+      ) Cập nhật
