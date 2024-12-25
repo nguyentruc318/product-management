@@ -1,6 +1,9 @@
 const filterStatusHelper = require("../../helper/filterStatus");
 const searchHelper = require("../../helper/search");
 const paginationHelper = require("../../helper/pagination");
+const { tree } = require("../../helper/create_tree");
+const ProductCategory = require("../../models/product_category_model");
+
 const Product = require("../../models/product_model");
 
 module.exports.index = async (req, res) => {
@@ -20,6 +23,14 @@ module.exports.index = async (req, res) => {
     currentPage: 1,
     limit: 4,
   };
+  // sort
+  let sort = {};
+  if (req.query.sortKey && req.query.sortValue) {
+    sort[req.query.sortKey] = req.query.sortValue;
+  } else {
+    sort.position = "desc";
+  }
+  //end sort
   const countProducts = await Product.countDocuments(find);
   let pagination = await paginationHelper(
     req.query,
@@ -28,7 +39,7 @@ module.exports.index = async (req, res) => {
   );
   objPagination = pagination;
   const products = await Product.find(find)
-    .sort({ position: "desc" })
+    .sort(sort)
     .limit(objPagination.limit)
     .skip(objPagination.skip);
   res.render("admin/pages/products/index", {
@@ -86,8 +97,11 @@ module.exports.deleteItem = async (req, res) => {
   res.redirect("back");
 };
 module.exports.create = async (req, res) => {
+  const records = await ProductCategory.find({ deleted: false });
+  const category = tree(records);
   res.render("admin/pages/products/create", {
     pageTitle: "Trang tạo sản phẩm",
+    category: category,
   });
 };
 module.exports.createPost = async (req, res) => {
