@@ -1,0 +1,91 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+  h1.mb-4 Thêm mới tài khoản
+  +alert-error(5000)
+
+  form(
+    action="/admin/accounts/create"
+    method="POST"
+    enctype="multipart/form-data"
+  )
+    // Họ tên
+    div.form-group
+      label(for="fullName") Họ tên *
+      input.form-control#fullName(
+        type="text"
+        name="fullName"
+        required
+      )
+
+    // Email
+    div.form-group
+      label(for="email") Email *
+      input.form-control#email(
+        type="email"
+        name="email"
+        required
+      )
+
+    // Mật khẩu
+    div.form-group
+      label(for="password") Mật khẩu *
+      input.form-control#password(
+        type="password"
+        name="password"
+        required
+      )
+
+    // Số điện thoại
+    div.form-group
+      label(for="phone") Số điện thoại
+      input.form-control#phone(
+        type="text"
+        name="phone"
+      )
+
+    // Avatar
+    div(class="form-group" upload-image)
+      label(for="avatar") Avatar
+      input.form-control-file#avatar(
+        type="file"
+        name="avatar"
+        accept="image/*"
+        upload-image-input
+      )
+      img.image-preview(
+        src=""
+        upload-image-preview
+      )
+
+    // Phân quyền
+    div.form-group
+      label(for="role_id") Phân quyền
+      select.form-control#role_id(name="role_id")
+        option(disabled) -- Chọn --
+        each item in roles
+            option(value=item.id) #{item.title} 
+
+    // Trạng thái
+    div.form-group.form-check-inline
+      input.form-check-input#statusActive(
+        type="radio"
+        name="status"
+        value="active"
+        checked
+      )
+      label.form-check-label(for="statusActive") Hoạt động
+    div.form-group.form-check-inline
+      input.form-check-input#statusInactive(
+        type="radio"
+        name="status"
+        value="inactive"
+      )
+      label.form-check-label(for="statusInactive") Dừng hoạt động
+
+    // Nút Tạo mới
+    div.form-group
+      button.btn.btn-primary(type="submit") Tạo mới
+    script(src="/admin/js/account.js")
+    

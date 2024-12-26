@@ -7,4 +7,5 @@ router.post("/create", roleController.createPost);
 router.get("/edit/:id", roleController.edit);
 router.patch("/edit/:id", roleController.editPatch);
 router.get("/permissions", roleController.permissions);
+router.patch("/permissions",roleController.permissionsPatch)
 module.exports = router;

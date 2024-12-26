@@ -51,3 +51,13 @@ module.exports.permissions = async (req, res) => {
     records: records,
   });
 };
+module.exports.permissionsPatch= async (req,res)=>{
+    const permissions = JSON.parse(req.body.permissions);
+    for(const permission of permissions){
+        const id = permission.id
+        await Role.updateOne({_id:id},{permission:permission.permissions})
+    }
+    req.flash("success","cập nhật phân quyền thành công")
+    res.redirect("back")
+
+}

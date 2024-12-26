@@ -16,9 +16,7 @@ if (tablePermissions) {
         inputs.forEach((input, index) => {
           const checked = input.checked;
           if (checked) {
-            permissions[index].permissions.push({
-              name: name,
-            });
+            permissions[index].permissions.push(name);
           }
         });
       }
@@ -33,3 +31,27 @@ if (tablePermissions) {
   });
 }
 // end permissions
+// Permission data default
+const dataRecords = document.querySelector("[data-records]")
+  if(dataRecords){
+    const records = JSON.parse(dataRecords.getAttribute("data-records"))
+    console.log(records)
+    const tablePermissions = document.querySelector("[table-permissions]")
+    records.forEach((record,index)=>{
+      const permissions = record.permission
+      console.log(permissions)
+      permissions.forEach((permission)=>{
+        console.log(permission)
+        const row = tablePermissions.querySelector(`[data-name="${permission}"]`);
+        if (!row) {
+          console.error(`Không tìm thấy hàng với data-name="${permission}"`);
+          return;
+        }
+        console.log(row)
+        const input = row.querySelectorAll("input")[index]
+        input.checked= true
+      })
+    })
+  }
+
+// end 
