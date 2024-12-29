@@ -116,6 +116,10 @@ module.exports.createPost = async (req, res) => {
   } else {
     req.body.position = parseInt(req.body.position);
   }
+  req.body.createdBy = {
+    accountId: res.locals.user._id,
+    createdAt: new Date(),
+  };
   if (req.file) req.body.thumbnail = `/uploads/${req.file.filename}`;
   const product = new Product(req.body);
 
@@ -129,12 +133,12 @@ module.exports.edit = async (req, res) => {
       _id: req.params.id,
     };
     const product = await Product.findOne(find);
-    const category = await Product.find({deleted:false})
-    const newCategory= tree(category)
+    const category = await Product.find({ deleted: false });
+    const newCategory = tree(category);
     res.render("admin/pages/products/edit", {
       pageTitle: "Cập nhật sản phẩm",
       product: product,
-      category: newCategory
+      category: newCategory,
     });
   } catch (error) {
     res.redirect("/admin/products");

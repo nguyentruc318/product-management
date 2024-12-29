@@ -11,13 +11,16 @@ mixin table-tree(records, level = 1)
       td
         input(type="number" value=product.position style="width: 60px" min="1" name="position")
       td
+        
         if product.status == "available"
           a(href="javascript:;" data-status=product.status data-id=product._id button-change-status class="badge badge-success") Hoạt động
         else
           a(href="javascript:;" data-status=product.status data-id=product.id button-change-status class="badge badge-danger") Dừng hoạt động
       td
         a(href=`/admin/products-category/detail/${product.id}` class="btn btn-primary btn-sm mr-1") Chi tiết
-        a(href=`/admin/products-category/edit/${product.id}` class="btn btn-warning btn-sm mr-1") Sửa
-        a(button-delete data-id=product._id class="btn btn-danger btn-sm") Xóa
+        if role.permission.includes("products-category_edit")
+          a(href=`/admin/products-category/edit/${product.id}` class="btn btn-warning btn-sm mr-1") Sửa
+        if role.permission.includes("products-category_delete")
+          a(button-delete data-id=product._id class="btn btn-danger btn-sm") Xóa
     if product.children && product.children.length>0
       +table-tree(product.children, level + 1)

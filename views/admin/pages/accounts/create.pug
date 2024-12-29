@@ -4,7 +4,7 @@ include ../../mixins/alert.pug
 block main
   h1.mb-4 Thêm mới tài khoản
   +alert-error(5000)
-
+  div #{roles}
   form(
     action="/admin/accounts/create"
     method="POST"
@@ -65,7 +65,7 @@ block main
       select.form-control#role_id(name="role_id")
         option(disabled) -- Chọn --
         each item in roles
-            option(value=item.id) #{item.title} 
+            option(value=item._id) #{item.title} 
 
     // Trạng thái
     div.form-group.form-check-inline

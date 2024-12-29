@@ -2,14 +2,19 @@
     .inner-menu
         ul
             li
-                a(href="/admin/dashboard") Trang chủ
-            li
-                a(href="/admin/products-category") Danh mục sản phẩm
-            li 
-                a(href="/admin/products") Danh sách sản phẩm
-            li 
-                a(href="/admin/roles") Nhóm quyền 
-            li 
-                a(href="/admin/roles/permissions") Phân quyền
-            li 
-                a(href="/admin/accounts") Danh sách tài khoản  
+                a(href="/admin/dashboard")  Tổng quan
+            if role.permission.includes("products-category_view")
+                li
+                    a(href="/admin/products-category") Danh mục sản phẩm
+            if role.permission.includes("products_view")
+                li 
+                    a(href="/admin/products") Danh sách sản phẩm
+            if role.permission.includes("roles_view")
+                li 
+                    a(href="/admin/roles") Nhóm quyền 
+            if role.permission.includes("roles_permissions")
+                li 
+                    a(href="/admin/roles/permissions") Phân quyền
+            if role.permission.includes("accounts_view")
+                li 
+                    a(href="/admin/accounts") Danh sách tài khoản  
