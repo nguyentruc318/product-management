@@ -5,6 +5,7 @@ const { tree } = require("../../helper/create_tree");
 const ProductCategory = require("../../models/product_category_model");
 
 const Product = require("../../models/product_model");
+const Account = require("../../models/account_model");
 
 module.exports.index = async (req, res) => {
   // console.log(req.query.status);
@@ -42,6 +43,13 @@ module.exports.index = async (req, res) => {
     .sort(sort)
     .limit(objPagination.limit)
     .skip(objPagination.skip);
+  // const Account = await
+  for (const product of products) {
+    const user = await Account.findOne({ _id: product.createdBy.accountId });
+    if (user) {
+      product.accountfullName = user.fullName;
+    }
+  }
   res.render("admin/pages/products/index", {
     pageTitle: "Trang sản phẩm",
     products: products,

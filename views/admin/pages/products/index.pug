@@ -62,7 +62,10 @@ block main
                     a(href="javascript:;" data-status=product.status data-id=product._id button-change-status class="badge badge-success") Hoạt động
                   else
                     a(href="javascript:;" data-status=product.status data-id=product.id button-change-status class="badge badge-danger") Dừng hoạt động
-                td #{product.createdBy.accountId}
+                td 
+                  p #{product.accountlullName}
+                  if(product.createdBy.createdAt)
+                    p #{product.createdBy.createdAt}
                 td
                   a(href=`/admin/products/detail/${product.id}` class="btn btn-primary btn-sm mr-1") Chi tiết
                   a(href=`/admin/products/edit/${product.id}` class="btn btn-warning btn-sm mr-1") Sửa
