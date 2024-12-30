@@ -1,0 +1,27 @@
+block main
+    h1(class="mb-4") Thông tin cá nhân
+
+    if (user.avatar)
+        img(src=user.avatar, width="150px", class="mb-3")
+    else
+        img(src="/admin/images/avatar.png", width="150px", class="mb-3")
+
+  
+    if (user.fullName)
+        p Họ tên: #{user.fullName}
+    
+    if (user.email)
+        p Email: #{user.email}
+    
+    if (user.phone)
+        p Số điện thoại: #{user.phone}
+
+
+    span Trang thái:
+    span
+        b #{user.status === "active" ? "Hoạt động" : "Dừng hoạt động"}
+
+
+    if (role.title)
+        p Phân quyền: <b>#{role.title}</b>
+    a(href='/admin/my-account/edit', class="btn btn-primary") Chỉnh sửa thông tin

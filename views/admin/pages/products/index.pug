@@ -5,6 +5,7 @@ include ../../mixins/pagination.pug
 include ../../mixins/form_changeMulti.pug
 include ../../mixins/alert.pug
 include ../../mixins/sort.pug
+include ../../mixins/time.pug
 block main
   +alert-success(5000)
   h1 Trang sản phẩm
@@ -43,7 +44,8 @@ block main
               th Giá
               th Vị trí
               th Trạng thái
-               th Người tạo
+              th Người tạo
+              th Người cập nhật 
               th Hành động
           tbody
             each product, index in products
@@ -63,9 +65,16 @@ block main
                   else
                     a(href="javascript:;" data-status=product.status data-id=product.id button-change-status class="badge badge-danger") Dừng hoạt động
                 td 
-                  p #{product.accountlullName}
-                  if(product.createdBy.createdAt)
-                    p #{product.createdBy.createdAt}
+                  p #{product.accountFullName}
+                  p   
+                    +formatDateTime(product.createdBy.createdAt)
+                td 
+                  - const updatedBy = product.updatedBy.slice(-1)[0];
+                  if(updatedBy)
+                    p #{updatedBy.accountFullName}
+                    p   
+                      +formatDateTime(updatedBy.updatedAt)
+                   
                 td
                   a(href=`/admin/products/detail/${product.id}` class="btn btn-primary btn-sm mr-1") Chi tiết
                   a(href=`/admin/products/edit/${product.id}` class="btn btn-warning btn-sm mr-1") Sửa

@@ -1,4 +1,4 @@
-console.log("Chạy được");
+// console.log("Chạy được");
 const buttonStatus = document.querySelectorAll("button[button-status]");
 if (buttonStatus.length > 0) {
   let url = new URL(window.location.href);

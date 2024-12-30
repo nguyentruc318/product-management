@@ -216,10 +216,10 @@ img {
 }
 
 /* Định dạng thông báo */
-.message.info {
+/* .message.info {
   margin-top: 20px;
   padding: 10px;
-  border: 1px solid #007bff; /* Đường viền cho thông báo */
-  background-color: #e7f1ff; /* Nền cho thông báo */
-  color: #007bff; /* Màu chữ cho thông báo */
-}
+  border: 1px solid #007bff; 
+  background-color: #e7f1ff; 
+  color: #007bff; 
+} */

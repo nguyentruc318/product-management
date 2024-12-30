@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const CookieParser = require("cookie-parser");
 const session = require("express-session");
 const multer = require("multer");
+const moment = require("moment")
 const app = express();
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,6 +20,7 @@ app.use(
   express.static(path.join(__dirname, "node_modules", "tinymce"))
 );
 app.locals.prefix = system.prefix;
+app.locals.moment= moment
 database.connect();
 const route = require("./routes/client/index_routes");
 const routeAdmin = require("./routes/admin/index_router");
