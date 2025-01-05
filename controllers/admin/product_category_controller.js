@@ -26,17 +26,23 @@ module.exports.create = async (req, res) => {
   });
 };
 module.exports.createPost = async (req, res) => {
-  if (req.body.position == "") {
-    const countPosition = await ProductCategory.countDocuments({});
-    req.body.position = countPosition + 1;
+  const permission = res.locals.role.permission;
+  // console.log(permission);
+  if (permission.includes("products-category_create")) {
+    if (req.body.position == "") {
+      const countPosition = await ProductCategory.countDocuments({});
+      req.body.position = countPosition + 1;
+    } else {
+      req.body.position = parseInt(req.body.position);
+    }
+    if (req.file)
+      req.body.thumbnail = `/uploads/product_category/${req.file.filename}`;
+    const record = new ProductCategory(req.body);
+    await record.save();
+    res.redirect("/admin/products-category");
   } else {
-    req.body.position = parseInt(req.body.position);
+    return;
   }
-  if (req.file)
-    req.body.thumbnail = `/uploads/product_category/${req.file.filename}`;
-  const record = new ProductCategory(req.body);
-  await record.save();
-  res.redirect("/admin/products-category");
 };
 
 module.exports.edit = async (req, res) => {

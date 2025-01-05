@@ -5,7 +5,7 @@ block main
   .container.my-3
     .row
       .col-12
-        +box-head("Danh sách sản phẩm")
+        +box-head(pageTitle)
 
     .row
       each item in products
@@ -17,7 +17,7 @@ block main
                 alt=item.title
               )
             .inner-content
-              a(href=`/products/${item.slug}`)
+              a(href=`/products/detail/${item.slug}`)
                 h3.inner-title #{item.title}
               .inner-price-new #{item.newPrice}$
               .inner-price-old #{item.price}$

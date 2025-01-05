@@ -2,19 +2,37 @@ include ../mixins/sub_menu.pug
 
 header.header 
     .container 
-        .row-align-items-center 
-            .col3
+        .row.align-items-center 
+            .col-3
                 .inner-logo
                     a(href="/")
                         img(src="/images/mango.png", alt="logo")
-            .col9
-
+            .col-6
+                form(action="/search", method="GET")
+                    div(class="form-group d-flex mb-0")
+                        input(
+                            type="text",
+                            placeholder="Nhập từ khóa...",
+                            class="form-control",
+                            name="keyword",
+                            value=keyword
+                        )
+                        button(
+                            type="submit",
+                            class="btn btn-primary"
+                        ) Tìm kiếm
+            .col-3
                 .inner-menu
                     ul
-                        li(class ="sub-menu")
+                        li(class="sub-menu")
                             - const pathProduct = "/products"
                             a(href="/products") sản phẩm
-                            +sub-menu(layoutProductCategory,pathProduct)
+                            +sub-menu(layoutProductCategory, pathProduct)
                         li 
                             a(href="/") Trang chủ
-                        
+                        li 
+                            a(href="/cart") Giỏ hàng(#{miniCart ? miniCart.totalQuantity : "0"})
+                        li 
+                            a(href="/user/login") Đăng nhập
+                        li 
+                            a(href="/user/register") Đăng ký

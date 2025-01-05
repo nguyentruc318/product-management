@@ -1,11 +1,22 @@
 .header {
-  border-bottom: 1px solid white;
-  padding: 10px 0;
+  background-color: #f8f9fa; /* Thay đổi màu nền */
+  border-bottom: 1px solid #dee2e6; /* Màu sắc nhẹ hơn cho đường viền */
+  padding: 15px 20px; /* Tăng padding để tạo không gian */
+  display: flex; /* Sử dụng flexbox để căn chỉnh */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  justify-content: space-between; /* Tạo khoảng cách giữa logo và menu */
 }
+.header {
+  background-color: #f8f9fa; /* Màu nền nhẹ cho header */
+  padding: 10px 0; /* Padding trên và dưới */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+
 .header .inner-logo img {
   max-width: 100%;
-  max-height: 50px;
+  max-height: 60px; /* Tăng chiều cao tối đa cho logo */
 }
+
 .header .inner-menu > ul {
   list-style: none;
   padding: 0;
@@ -17,7 +28,18 @@
 }
 
 .header .inner-menu > ul > li {
-  margin-left: 20px;
+  margin-left: 30px; /* Tăng khoảng cách giữa các mục menu */
+}
+
+.header .inner-menu > ul > li a {
+  text-decoration: none; /* Bỏ gạch chân */
+  color: #333; /* Màu chữ cho liên kết */
+  font-weight: 500; /* Đậm hơn một chút */
+  transition: color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+.header .inner-menu > ul > li a:hover {
+  color: #333; /* Màu khi hover */
 }
 
 /* End Header */
@@ -38,6 +60,7 @@
 }
 /* Styles for product-item */
 .product-item {
+  height: 100%;
   border: 1px solid #ddd; /* Viền sản phẩm */
   border-radius: 8px; /* Bo tròn các góc */
   overflow: hidden; /* Đảm bảo các phần tử không tràn ra ngoài */
@@ -66,6 +89,17 @@
   font-weight: 600;
   margin-bottom: 10px; /* Tạo khoảng cách dưới tiêu đề */
   color: #333; /* Màu chữ */
+}
+.product-item .inner-featured {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: green; /* Màu nền */
+  color: white; /* Màu chữ */
+  padding: 3px 6px; /* Padding */
+  font-weight: 600; /* Độ đậm của chữ */
+  font-size: 14px; /* Kích thước chữ */
+  border-radius: 8px; /* Bo góc */
 }
 
 .product-item .inner-content .inner-price-new {
@@ -109,7 +143,6 @@
   display: none;
 }
 
-
 /* sub menu */
 .sub-menu {
   list-style: none;
@@ -121,7 +154,7 @@
 .sub-menu > a {
   display: block;
   padding: 10px 15px;
-  background-color: #007BFF;
+  background-color: #007bff;
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -136,7 +169,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  display: none;  /* Ẩn menu con mặc định */
+  display: none; /* Ẩn menu con mặc định */
   position: absolute;
   top: 100%;
   left: 0;
@@ -160,7 +193,7 @@
 
 .sub-menu ul li a:hover {
   background-color: #e9ecef;
-  color: #007BFF;
+  color: #007bff;
 }
 
 .sub-menu ul ul {
@@ -172,4 +205,81 @@
 
 .sub-menu ul li:hover > ul {
   display: block; /* Hiện menu cấp 3 khi hover */
+}
+/* End sub menu */
+.product-detail {
+  background-color: #f8f9fa; /* Màu nền nhẹ */
+  padding: 20px; /* Padding cho toàn bộ chi tiết sản phẩm */
+  border-radius: 8px; /* Bo góc cho khung sản phẩm */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+
+.product-detail h1 {
+  font-size: 24px; /* Kích thước chữ cho tiêu đề sản phẩm */
+  color: #333; /* Màu chữ */
+  margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+}
+
+.product-detail .mb-4 {
+  margin-bottom: 16px; /* Khoảng cách giữa các phần tử */
+}
+
+.product-detail b {
+  color: #d9534f; /* Màu chữ cho giá và giảm giá */
+  font-weight: bold; /* Đậm chữ */
+}
+
+.product-detail img {
+  border-radius: 4px; /* Bo góc cho hình ảnh */
+}
+
+.product-detail a.btn {
+  background-color: #007bff; /* Màu nền cho nút */
+  color: white; /* Màu chữ cho nút */
+  padding: 10px 20px; /* Padding cho nút */
+  border-radius: 5px; /* Bo góc cho nút */
+  text-decoration: none; /* Bỏ gạch chân */
+  transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+.product-detail a.btn:hover {
+  background-color: #0056b3; /* Màu nền khi hover */
+}
+.alert {
+  padding: 15px 40px 15px 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease-in-out;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border-left: 4px solid #28a745;
+}
+
+/* Close button */
+[close-alert] {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px;
+  color: inherit;
+  opacity: 0.7;
+}
+
+[close-alert]:hover {
+  opacity: 1;
+}
+
+/* Hidden state */
+.alert-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
 }
