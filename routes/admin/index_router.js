@@ -6,7 +6,8 @@ const productCategoryRoute = require("./product_category_route.js");
 const roleRoute = require("./roles_router.js");
 const accountRoute = require("./account_route.js");
 const authenRoute = require("./authen_route.js");
-const myAccountRoute = require("./my-account_route.js")
+const myAccountRoute = require("./my-account_route.js");
+const settingRoute = require("./setting_route.js");
 module.exports = (app) => {
   const PATH = systemConfig.prefix;
   app.use(PATH + "/dashboard", authenMiddleware.requireAuth, dashboardRoute);
@@ -20,4 +21,5 @@ module.exports = (app) => {
   app.use(PATH + "/accounts", authenMiddleware.requireAuth, accountRoute);
   app.use(PATH + "/auth", authenRoute);
   app.use(PATH + "/my-account", authenMiddleware.requireAuth, myAccountRoute);
+  app.use(PATH + "/settings", authenMiddleware.requireAuth, settingRoute);
 };
